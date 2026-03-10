@@ -60,10 +60,15 @@ public static class ServiceCollectionExtensions
         services.AddScoped<DocumentIndexingService>();
         services.AddScoped<RetrievalService>();
         
+        services.Configure<ClickHouseOptions>(configuration.GetSection("ClickHouse"));
+        services.AddHttpClient();
+        
         // Training Services
         services.AddScoped<DatasetParsingService>();
         services.AddScoped<ClickHouseDatasetLoader>();
+        services.AddScoped<ClickHouseTrainingDataService>();
         services.AddScoped<DatasetManifestBuilder>();
+        services.AddScoped<R2ArtifactService>();
 
         // Vector Store
         services.AddSingleton<QdrantClient>(sp => {
