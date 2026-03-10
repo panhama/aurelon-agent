@@ -1,6 +1,5 @@
-using Aurelon.Jobs;
 
-namespace Aurelon.Jobs;
+namespace Aurelon.Models;
 
 public abstract class JobRecord
 {

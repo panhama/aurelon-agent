@@ -1,5 +1,6 @@
 namespace Aurelon.Services;
 using System.Text.RegularExpressions;
+using Aurelon.Models;
 
 public static class RetrievalTextNormalizer
 {

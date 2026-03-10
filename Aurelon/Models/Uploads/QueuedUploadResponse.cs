@@ -1,8 +1,5 @@
-using Aurelon.Uploads;
-using Aurelon.Jobs;
-using Aurelon.Uploads;
 
-namespace Aurelon.Uploads;
+namespace Aurelon.Models;
 
 public sealed record QueuedUploadResponse(
     Guid UploadId,

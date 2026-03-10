@@ -1,4 +1,4 @@
-﻿namespace Aurelon.Workers.Documents.Models;
+﻿namespace Aurelon.Models;
 
 public sealed record DocumentChunkRecord(
     Guid Id,

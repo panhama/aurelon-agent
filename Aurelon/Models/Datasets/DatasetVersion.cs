@@ -1,6 +1,5 @@
-using Aurelon.Jobs;
 
-namespace Aurelon.Datasets;
+namespace Aurelon.Models;
 
 public sealed class DatasetVersion
 {

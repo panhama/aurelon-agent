@@ -1,4 +1,4 @@
-﻿namespace Aurelon.Options;
+﻿namespace Aurelon.Models;
 
 public sealed class ClickHouseOptions
 {

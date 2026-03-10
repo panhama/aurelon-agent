@@ -1,6 +1,8 @@
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 using UglyToad.PdfPig.DocumentLayoutAnalysis.PageSegmenter;
+using Aurelon.Models;
+
 namespace Aurelon.Services;
 public sealed class PdfExtractor
 {

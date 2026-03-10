@@ -1,10 +1,8 @@
-using Aurelon.Documents;
-using Aurelon.Jobs;
-using Aurelon.Uploads;
-using Aurelon.Infrastructure.Db;
 using Dapper;
+using Aurelon.Db;
+using Aurelon.Models;
 
-namespace Aurelon.Infrastructure.Repositories.Documents;
+namespace Aurelon.Repositories;
 
 public interface IDocumentLibraryRepository
 {

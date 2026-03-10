@@ -1,4 +1,4 @@
-namespace Aurelon.Jobs;
+namespace Aurelon.Models;
 
 public sealed class DocumentJob : JobRecord
 {

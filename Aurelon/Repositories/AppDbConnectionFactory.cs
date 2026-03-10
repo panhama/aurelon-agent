@@ -1,7 +1,7 @@
 using System.Data.Common;
 using Npgsql;
 
-namespace Aurelon.Infrastructure.Db;
+namespace Aurelon.Db;
 
 public interface IAppDbConnectionFactory
 {

@@ -1,4 +1,4 @@
-namespace Aurelon.Datasets;
+namespace Aurelon.Models;
 
 public sealed class Dataset
 {

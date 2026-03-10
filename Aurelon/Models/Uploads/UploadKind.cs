@@ -1,4 +1,4 @@
-namespace Aurelon.Uploads;
+namespace Aurelon.Models;
 
 public enum UploadKind
 {

@@ -1,7 +1,5 @@
-using Aurelon.Jobs;
-using Aurelon.Uploads;
 
-namespace Aurelon.Jobs;
+namespace Aurelon.Models;
 
 public sealed record JobStatusResponse(
     Guid JobId,

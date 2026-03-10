@@ -1,10 +1,9 @@
-using Aurelon.Jobs;
-using Aurelon.Uploads;
-using Aurelon.Infrastructure.Db;
 using Dapper;
 using Npgsql;
+using Aurelon.Db;
+using Aurelon.Models;
 
-namespace Aurelon.Infrastructure.Repositories.Jobs;
+namespace Aurelon.Repositories;
 
 public interface IJobReadRepository
 {

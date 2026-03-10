@@ -2,6 +2,8 @@ using System.Text;
 using System.Text.RegularExpressions;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
+using Aurelon.Models;
+
 namespace Aurelon.Services;
 public sealed class DocxExtractor
 {

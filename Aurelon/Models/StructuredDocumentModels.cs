@@ -1,4 +1,4 @@
-namespace Aurelon.Services;
+namespace Aurelon.Models;
 public sealed record ExtractedBlock(
     int PageNumber,
     int Order,
@@ -13,6 +13,6 @@ public sealed record ExtractedBlock(
 public sealed record StructuredDocument(
     string DocumentId,
     string FileName,
-    string DocumentType,   // pdf | docx
+    string DocumentType,   // pdf | docx | md | xlsx
     IReadOnlyList<ExtractedBlock> Blocks
 );

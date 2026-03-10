@@ -1,9 +1,8 @@
-﻿using Aurelon.Contracts.Jobs;
-using Aurelon.Infrastructure.Db;
-using Aurelon.Workers.Documents.Models;
 using Dapper;
+using Aurelon.Db;
+using Aurelon.Models;
 
-namespace Aurelon.Workers.Documents.Repositories;
+namespace Aurelon.Repositories;
 
 public sealed class DocumentWorkRepository(IAppDbConnectionFactory connectionFactory)
 {

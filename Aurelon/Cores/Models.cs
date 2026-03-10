@@ -1,6 +1,6 @@
 ﻿using Aurelon.Models;
 
-namespace Aurelon.MlWorker.Cores;
+namespace Aurelon.Cores;
 
 public sealed class TrainingExecutionJob
 {

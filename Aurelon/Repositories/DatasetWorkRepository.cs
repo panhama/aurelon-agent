@@ -1,8 +1,8 @@
-using Aurelon.Infrastructure.Db;
-using Aurelon.Workers.Datasets.Models;
+using Aurelon.Db;
+using Aurelon.Models;
 using Dapper;
 
-namespace Aurelon.Workers.Datasets.Repositories;
+namespace Aurelon.Repositories;
 
 public sealed class DatasetWorkRepository(IAppDbConnectionFactory connectionFactory)
 {

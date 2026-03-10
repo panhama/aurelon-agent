@@ -1,8 +1,8 @@
-using Aurelon.Jobs;
 using Dapper;
 using Npgsql;
+using Aurelon.Models;
 
-namespace Aurelon.Infrastructure.Repositories.Documents;
+namespace Aurelon.Repositories;
 
 public interface IDocumentJobRepository
 {

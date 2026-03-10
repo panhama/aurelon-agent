@@ -33,6 +33,36 @@ public sealed class VoyageEmbeddingClient
     public async Task<float[]> EmbedQueryAsync(string text, CancellationToken ct)
         => (await EmbedAsync(new[] { text }, "query", ct))[0];
 
+    public async Task<float[]> RerankAsync(string query, IReadOnlyList<string> documents, CancellationToken ct)
+    {
+        var body = new
+        {
+            query = query,
+            documents = documents,
+            model = "rerank-2.5-lite"
+        };
+
+        using var req = new HttpRequestMessage(HttpMethod.Post, "v1/rerank")
+        {
+            Content = new StringContent(
+                JsonSerializer.Serialize(body),
+                Encoding.UTF8,
+                "application/json")
+        };
+
+        using var resp = await _http.SendAsync(req, ct);
+        resp.EnsureSuccessStatusCode();
+
+        await using var stream = await resp.Content.ReadAsStreamAsync(ct);
+        var payload = await JsonSerializer.DeserializeAsync<VoyageRerankResponse>(stream, cancellationToken: ct)
+                      ?? throw new InvalidOperationException("Voyage rerank response was empty.");
+
+        return payload.Data
+            .OrderBy(x => x.Index)
+            .Select(x => x.RelevanceScore)
+            .ToArray();
+    }
+
     private async Task<float[][]> EmbedAsync(IReadOnlyList<string> inputs, string inputType, CancellationToken ct)
     {
         var body = new
@@ -78,6 +108,21 @@ public sealed class VoyageEmbeddingClient
 
             [JsonPropertyName("embedding")]
             public float[] Embedding { get; init; } = Array.Empty<float>();
+        }
+    }
+
+    private sealed class VoyageRerankResponse
+    {
+        [JsonPropertyName("data")]
+        public List<RerankItem> Data { get; init; } = new();
+
+        public sealed class RerankItem
+        {
+            [JsonPropertyName("index")]
+            public int Index { get; init; }
+
+            [JsonPropertyName("relevance_score")]
+            public float RelevanceScore { get; init; }
         }
     }
 }

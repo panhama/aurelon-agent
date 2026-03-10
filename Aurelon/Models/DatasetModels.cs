@@ -1,4 +1,4 @@
-﻿namespace Aurelon.Workers.Datasets.Models;
+﻿namespace Aurelon.Models;
 
 public sealed record DatasetLease(
     Guid JobId,
