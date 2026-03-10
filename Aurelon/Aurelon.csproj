@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="CsvHelper" Version="33.1.0" />
+        <PackageReference Include="DocumentFormat.OpenXml" Version="3.4.1" />
+        <PackageReference Include="EPPlus" Version="8.5.0" />
+        <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.3"/>
+        <PackageReference Include="Microsoft.SemanticKernel.Connectors.Qdrant" Version="1.73.0-preview" />
+        <PackageReference Include="PdfPig" Version="0.1.14-alpha-20260310-471ae" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Controllers\" />
+      <Folder Include="Cores\" />
+    </ItemGroup>
+
+</Project>

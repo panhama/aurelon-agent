@@ -1,0 +1,6 @@
+@Aurelon_HostAddress = http://localhost:5160
+
+GET {{Aurelon_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
