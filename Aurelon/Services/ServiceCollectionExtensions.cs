@@ -18,25 +18,18 @@ public static class ServiceCollectionExtensions
     public static IServiceCollection AddAurelonInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("DefaultConnection")
-            ?? "Host=localhost;Database=aurelon;Username=postgres;Password=postgres";
+            ?? throw new InvalidOperationException("DefaultConnection string is required.");
 
         services.Configure<CloudflareR2Options>(configuration.GetSection("CloudflareR2"));
         
         services.AddSingleton(sp => NpgsqlDataSource.Create(connectionString));
         services.AddSingleton<IAppDbConnectionFactory, AppDbConnectionFactory>();
 
-        services.AddSingleton<IAmazonS3>(sp =>
-        {
-            var options = configuration.GetSection("CloudflareR2").Get<CloudflareR2Options>()
-                ?? new CloudflareR2Options();
-            var credentials = new BasicAWSCredentials(options.AccessKey, options.SecretKey);
-            var config = new AmazonS3Config
-            {
-                ServiceURL = options.ServiceUrl,
-                ForcePathStyle = true,
-            };
-            return new AmazonS3Client(credentials, config);
-        });
+        var r2Options = configuration.GetSection("CloudflareR2").Get<CloudflareR2Options>() ?? new CloudflareR2Options();
+        var awsOptions = configuration.GetAWSOptions();
+        awsOptions.Credentials = new BasicAWSCredentials(r2Options.AccessKey, r2Options.SecretKey);
+        services.AddDefaultAWSOptions(awsOptions);
+        services.AddAWSService<IAmazonS3>();
 
         services.AddSingleton<IR2ObjectStorage, R2ObjectStorage>();
         services.AddScoped<DocumentWorkRepository>();
