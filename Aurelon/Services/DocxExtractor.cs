@@ -10,7 +10,7 @@ public sealed class DocxExtractor
     public StructuredDocument Extract(string documentId, string fileName, string path)
     {
         using var doc = WordprocessingDocument.Open(path, false);
-        var body = doc.MainDocumentPart?.Document.Body
+        var body = doc.MainDocumentPart?.Document?.Body
                    ?? throw new InvalidOperationException("DOCX body not found.");
 
         var blocks = new List<ExtractedBlock>();

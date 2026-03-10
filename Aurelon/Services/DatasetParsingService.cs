@@ -7,7 +7,7 @@ public sealed class DatasetParsingService
 {
     static DatasetParsingService()
     {
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        ExcelPackage.License.SetNonCommercialPersonal("Aurelon");
     }
 
     public async Task<ParsedDataset> ParseAsync(Stream stream, string fileName, CancellationToken ct)

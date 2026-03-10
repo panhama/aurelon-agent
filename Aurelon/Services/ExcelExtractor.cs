@@ -8,7 +8,7 @@ public sealed class ExcelExtractor
 {
     static ExcelExtractor()
     {
-        ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        ExcelPackage.License.SetNonCommercialPersonal("Aurelon");
     }
 
     public StructuredDocument Extract(string documentId, string fileName, string path)
